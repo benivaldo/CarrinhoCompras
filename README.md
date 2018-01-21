@@ -5,7 +5,7 @@ Para o Back-End:
 Na pasta api - rodar composer install
 php -S localhost:8400 
 
-Para o Front-End
+Para o Front-End:
 npm install connect serve-static
 
 node server.js

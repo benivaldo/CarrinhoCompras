@@ -1,11 +1,16 @@
 # CarrinhoCompras
 
-dump do banco na pasta api, compras.sql.
+dump do banco na pasta api:
+
+compras.sql.
+
 usuario: root.
 senha: ''.
 
 Para o Back-End:
-Na pasta api/ - rodar composer install.
+Na pasta api/: 
+
+rodar composer install.
 
 Para rodar o servidor na pasta api/public/
 

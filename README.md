@@ -2,7 +2,7 @@
 
 dump do banco na pasta api, compras.sql.
 Para o Back-End:
-Na pasta api - rodar composer install
+Na pasta api/public - rodar composer install
 php -S localhost:8400 
 
 Para o Front-End:

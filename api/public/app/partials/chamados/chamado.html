@@ -1,0 +1,90 @@
+
+<div class="container" ng-controller="ChamadoListCtrl">
+  <h4 class="page-header">Lista de chamados</h4>
+  <!-- <div class="alert alert-info">
+    <p>Sort Type: {{ sortType }}</p>
+    <p>Sort Reverse: {{ sortReverse }}</p>
+    <p>Search Query: {{ searchChamados }}</p>
+  </div> -->
+  
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+        <input type="text" class="form-control" placeholder="Search da Chamados" ng-model="searchChamados">
+      </div>      
+    </div>
+  </form>
+  
+  <table class="table table-sm table-condensed">
+    <thead>
+      <tr>
+        <td>
+          <a href="" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+            Id 
+            <span class="glyphicon sort-icon" ng-show="sortType == 'id'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'clienteId.nome'; sortReverse = !sortReverse">
+          Nome
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'clienteId.nome'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span>
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'pedidoId.descricao'; sortReverse = !sortReverse">
+          Pedido
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'pedidoId.descricao'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span> 
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'email'; sortReverse = !sortReverse">
+          E-mail
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'email'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span> 
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'titulo'; sortReverse = !sortReverse">
+          T&iacute;tulo
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'titulo'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span> 
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 'observacao'; sortReverse = !sortReverse">
+          Observa&ccedil;&atilde;o
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'observacao'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span> 
+          </a>
+        </td>
+        <td>
+          <a href="" ng-click="sortType = 't_dataCadastro'; sortReverse = !sortReverse">
+          Data
+          	<span class="glyphicon sort-icon" ng-show="sortType == 't_dataCadastro'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span> 
+          </a>
+        </td>
+        <td></td>
+        <td><a ng-click="addNewOne(0)" class="btn btn-sm btn-primary">Novo</a></td>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr dir-paginate="roll in chamados | orderBy:sortType:sortReverse | filter:searchChamados | itemsPerPage:11">
+        <td>{{ roll.id }}</td>
+        <td>{{ roll.clienteId.nome }}</td>
+        <td>{{ roll.pedidoId.descricao }}</td>
+        <td>{{ roll.email }}</td>
+        <td>{{ roll.titulo }}</td>
+        <td>{{ roll.observacao }}</td>
+        <td><div date-format="roll.dataCadastro"></div></td>
+        <td><button ng-click="editChamado(roll.id)" class="btn btn-sm btn-primary">Editar</button></td>
+        <td><button ng-click="deleteChamado(roll.id)" class="btn btn-sm btn-danger"  ng-really-message="Deseja mesmo efetuar essa opera&ccedil;&atilde;o">Excluir</button></td>
+      </tr>
+    </tbody>    
+  </table>
+  <dir-pagination-controls
+	max-size="10"
+	direction-links="true"
+	boundary-links="true" >
+</dir-pagination-controls>
+</div>
+
+

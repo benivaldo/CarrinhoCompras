@@ -1,0 +1,40 @@
+body {
+    width: 100%;	
+    margin: 0%;    
+  	padding-top: 60px;
+}
+
+a:link {
+    color: red;
+}
+/* visited link */
+a:visited {
+    color: #000;
+}
+
+/* mouse over link */
+a:hover {
+    color: blue;
+}
+
+.starter-template {
+  	padding: 0px !important;
+}
+
+
+.prod_img {
+	width: 60%;
+	height: 60%"
+}
+.detalhe-nome {
+	 font-size: 25px;
+}
+
+.detalhe-valor {
+	font-size: 25px;
+}
+
+.prod_img_pedido {
+	width: 60px;
+	height: 60px"
+}

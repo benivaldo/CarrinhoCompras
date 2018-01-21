@@ -1,0 +1,77 @@
+<div class="container-fluid" ng-controller="mainController" ng-cloak>
+    <nav class="navbar navbar-default navbar-fixed-top">        
+        <md-menu-bar>
+          <md-menu>
+            <button ng-click="$mdMenu.open()">
+              Sac
+            </button>
+            <md-menu-content class="nav-itens">
+              <md-menu-item>
+                <md-button ng-click="addTab('Albuns', 'app/partials/albums.html', 'aba_albuns')">
+                  Albuns
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="addTab('Chamados', 'app/partials/chamados/chamado.html', 'aba_chamados')">
+                  Chamados
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+              <md-menu-item>
+                <md-menu>
+                  <md-button ng-click="$mdMenu.open()">New</md-button>
+                  <md-menu-content class="nav-itens">
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button></md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </md-menu-item>
+            </md-menu-item>
+            </md-menu-content>
+          </md-menu>  
+       	<md-menu>
+		  <button ng-click="$mdMenu.open()">
+		    Departamento
+		  </button>
+		  <md-menu-content class="nav-itens">
+		    <md-menu-item>
+		      <md-button ng-click="addTab('Se&ccedil;&atilde;o', 'app/partials/secao/secao.html', 'aba_secao')">
+		        Se&ccedil;&atilde;o
+		      </md-button>
+		    </md-menu-item>
+		     <md-menu-divider></md-menu-divider>
+		    <md-menu-item>
+		      <md-button ng-click="addTab('Grupo', 'app/partials/grupo/grupo.html', 'aba_grupo')">
+		        Grupo
+		      </md-button>
+		    </md-menu-item>
+		    <md-menu-divider></md-menu-divider>
+		     <md-menu-item>
+		      <md-button ng-click="addTab('Subgrupo', 'app/partials/subgrupo/subgrupo.html', 'aba_subgrupo')">
+		        Grupo
+		      </md-button>
+		    </md-menu-item>		    
+		    </md-menu-content>
+		</md-menu>
+        </md-menu-bar>
+    </nav>            
+	<div class="starter-template">
+  		 <md-content class="md-padding">
+    	    <md-tabs md-selected="selectedIndex" md-dynamic-height="" md-autoselect >
+        	  <md-tab ng-repeat="tab in tabs | orderBy:predicate:reversed" ng-disabled="tab.disabled">
+        	    <md-tab-label>
+        	      {{tab.title}}
+        	      <md-icon class="tab-remove" md-font-icon="glyphicon glyphicon-remove" ng-click="removeTab(tab)" ng-disabled="tabs.length <= 1"></md-icon>
+        	    </md-tab-label>
+        	    <md-tab-body>
+        	      <div id="div-tab-content" compile-html="tab.content"></div>
+        	    </md-tab-body>
+        	  </md-tab>
+        	</md-tabs>
+    	  </md-content>
+	</div>
+</div>

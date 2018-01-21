@@ -1,0 +1,63 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PedidoItens
+ *
+ * @ORM\Table(name="pedido_itens", indexes={@ORM\Index(name="pedido_id", columns={"pedido_id"})})
+ * @ORM\Entity
+ */
+class PedidoItens
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_item", type="bigint", nullable=false, options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idItem;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codigo", type="string", length=255, nullable=false)
+     */
+    private $codigo;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="quantidade", type="integer", nullable=false)
+     */
+    private $quantidade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="valor", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $valor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="total", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $total;
+
+    /**
+     * @var \Pedidos
+     *
+     * @ORM\ManyToOne(targetEntity="Pedidos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pedido_id", referencedColumnName="id")
+     * })
+     */
+    private $pedido;
+
+
+}

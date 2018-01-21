@@ -1,0 +1,25 @@
+<md-menu>
+  <button ng-click="$mdMenu.open()">
+    Departamento
+  </button>
+  <md-menu-content class="nav-itens">
+    <md-menu-item>
+      <md-button ng-click="addTab('Seção', 'app/partials/secao/secao.html', 'aba_secao')">
+        Se&ccedil;&otilde;o
+      </md-button>
+    </md-menu-item>
+     <md-menu-divider></md-menu-divider>
+    <md-menu-item>
+      <md-button ng-click="addTab('Grupo', 'app/partials/grupo/grupo.html', 'aba_grupo')">
+        Grupo
+      </md-button>
+    </md-menu-item>
+    <md-menu-divider></md-menu-divider>
+     <md-menu-item>
+      <md-button ng-click="addTab('Subgrupo', 'app/partials/subgrupo/subgrupo.html', 'aba_subgrupo')">
+        Grupo
+      </md-button>
+    </md-menu-item>
+    
+    </md-menu-content>
+</md-menu>

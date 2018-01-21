@@ -1,0 +1,28 @@
+
+<div class="container">
+   	&gt;<a href="" ng-click="listaProdCategoria(menuId, menuNome)">{{menuNome}}</a>
+	  <div class="row page-header"></div>
+      <div class="row">
+ 	      	<div class="col-md-6">
+           		<img class="prod_img" ng-src="{{detalhe.imagem}}">
+           	</div>
+           	
+           	<div class="col-md-6">
+           		<div class="row detalhe-nome">{{detalhe.nome}}</div>
+           		<div class="row">C&oacute;digo({{detalhe.codigo}})</div>
+           		<div class="row page-header"></div>
+           		<div class="row">
+           			<div class="col-md-6 detalhe-valor">{{detalhe.valor | currency:'R$'}}</div>
+           			<div class="col-md-6">
+           				<button type="button" class="btn btn-success"  ng-click="adicionaCarrinho(detalhe.codigo)">Comprar</button>
+           			</div>
+           		</div>
+           	</div>
+      </div>
+      
+      <div class="row page-header"></div>
+      <div class="row"><h4 class="page-header">Informa&ccedil;&otilde;es do produto</h4></div>
+      <div class="row"><div class="col-md-12">{{detalhe.descricao}}</div></div>
+</div>
+
+

@@ -1,0 +1,26 @@
+
+<div class="container-fluid">
+   <h4 class="page-header">Meus Pedidos</h4>
+      <table class="table">
+      	<thead>
+      	  <tr>
+      	   <th>Pedido</th>
+      	   <th>Data</th>
+      	   <th>Status</th>
+      	   <th>Total</th>
+      	   <th></th>
+      	  </tr>
+      	</thead>
+      	<tbody>
+      	  <tr ng-repeat="pedido in pedidos">
+      	   <td>{{pedido.id}}</td>
+      	   <td>{{pedido.dateCreate.date | asDate | date:'MM/d/yyyy' }}</td>
+      	   <td>{{pedido.status}}</td>
+      	   <td>{{pedido.total | currency:'R$'}}</td>
+      	   <td><button type="button" class="btn btn-primary"  ng-click="pedidoDetalhe(pedido.id)">Detalhe</button></td>
+      	  </tr>
+      	</tbody>
+      </table>
+</div>
+
+

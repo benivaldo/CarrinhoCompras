@@ -1,0 +1,58 @@
+
+
+<div class="container" ng-controller="AlbumListCtrl">
+  
+  <div class="alert alert-info">
+    <p>Sort Type: {{ sortType }}</p>
+    <p>Sort Reverse: {{ sortReverse }}</p>
+    <p>Search Query: {{ searchFish }}</p>
+  </div>
+  
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control" placeholder="Search da Fish" ng-model="searchFish">
+      </div>      
+    </div>
+  </form>
+  
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td>
+          <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            Sushi Roll 
+            <span class="glyphicon sort-icon" ng-show="sortType == 'name'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span>
+          </a>
+        </td>
+        <td>
+          <a href="#" ng-click="sortType = 'fish'; sortReverse = !sortReverse">
+          Fish Type 
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'fish'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span>
+          </a>
+        </td>
+        <td>
+          <a href="#" ng-click="sortType = 'tastiness'; sortReverse = !sortReverse">
+          Taste Level
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'tastiness'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span> 
+          </a>
+        </td>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr dir-paginate="roll in sushi | orderBy:sortType:sortReverse | filter:searchFish | itemsPerPage:2">
+        <td>{{ roll.name }}</td>
+        <td>{{ roll.fish }}</td>
+        <td>{{ roll.tastiness }}</td>
+      </tr>
+    </tbody>    
+  </table>
+  <dir-pagination-controls
+	max-size="2"
+	direction-links="true"
+	boundary-links="true" >
+</dir-pagination-controls>
+</div>
+

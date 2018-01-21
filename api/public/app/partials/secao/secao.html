@@ -1,0 +1,62 @@
+
+<div class="container" ng-controller="SecaoListCtrl">
+  <h4 class="page-header">Lista de Se&ccedil;&atilde;o</h4>
+  <!-- <div class="alert alert-info">
+    <p>Sort Type: {{ sortType }}</p>
+    <p>Sort Reverse: {{ sortReverse }}</p>
+    <p>Search Query: {{ searchChamados }}</p>
+  </div> -->
+    
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+        <input type="text" class="form-control" placeholder="Pesquisa de Se&ccedil;&atilde;o" ng-model="searchSecao">
+      </div>      
+    </div>
+  </form>
+  
+  <table class="table table-sm table-condensed">
+    <thead>
+      <tr>
+        <td class="col-sm-2">
+          <a href="" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+            Id 
+            <span class="glyphicon sort-icon" ng-show="sortType == 'id'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span>
+          </a>
+        </td>
+        <td class="col-sm-6">
+          <a href="" ng-click="sortType = 'descricao'; sortReverse = !sortReverse">
+          Nome
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'descricao'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span>
+          </a>
+        </td>
+        <td class="col-sm-4">
+          <a href="" ng-click="sortType = 'dataCadastro'; sortReverse = !sortReverse">
+          Data
+          	<span class="glyphicon sort-icon" ng-show="sortType == 'dataCadastro'" ng-class="{'glyphicon-chevron-up':sortReverse,'glyphicon-chevron-down':!sortReverse}"></span> 
+          </a>
+        </td>
+        <td class="col-sm-2"></td>
+        <td class="col-sm-2"><a ng-click="addNewOne(0)" class="btn btn-sm btn-primary">Novo</a></td>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr dir-paginate="roll in secao | orderBy:sortType:sortReverse | filter:searchSecao | itemsPerPage:11">
+        <td>{{ roll.id }}</td>
+        <td>{{ roll.descricao }}</td>
+        <td><div date-format="roll.dataCadastro"></div></td>
+        <td><button ng-click="edit(roll.id)" class="btn btn-sm btn-primary">Editar</button></td>
+        <td><button ng-click="delete(roll.id)" class="btn btn-sm btn-danger"  ng-really-message="Deseja mesmo efetuar essa opera&ccedil;&atilde;o">Excluir</button></td>
+      </tr>
+    </tbody>    
+  </table>
+  <dir-pagination-controls
+	max-size="10"
+	direction-links="true"
+	boundary-links="true" >
+</dir-pagination-controls>
+</div>
+
+

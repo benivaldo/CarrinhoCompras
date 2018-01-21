@@ -1,0 +1,47 @@
+
+<div class="container-fluid">
+   	&gt;<a href="" ng-click="listaProdCategoria(menuId, menuNome)">{{menuNome}}</a>
+   	<div class="row">
+		<button type="button" class="btn btn-primary"  ng-click="voltarLoja()">Comprar + Produtos</button>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-10"></div> 
+		<div class="col-sm-2"><button type="button" class="btn btn-primary"  ng-click="gravaPedido(0)">Finalizar pedido</button></div>
+	</div>
+   <h4 class="page-header">Meu Carrinho</h4>
+      <table class="table">
+      	<thead>
+      	  <tr>
+      	   <th>Produto(s)</th>
+      	   <th>Quantidade</th>
+      	   <th>Valor Unit&aacute;rio</th>
+      	   <th>Valor Total</th>
+      	  </tr>
+      	</thead>
+      	<tbody>
+      	  <tr ng-repeat="pedido in carrinho">
+      	   <td><img class="prod_img_pedido" ng-src="{{pedido.imagem}}">{{pedido.nome}}</td>
+      	   <td>
+      	     <div class="row">
+      	       <select ng-change="alteraCarrinho(pedido.codigo, selectedQtd)" ng-model="selectedQtd" ng-init="selectedQtd = pedido.quantidade" ng-options="x for x in [1,2,3,4,5,6,7,8,9,10]"></select>
+      	     </div>
+      	     <div class="row">
+      	     <a href="" ng-click="removerCarrinho(pedido.codigo, selectedQtd)">Remover do carrinho</a>
+      	     </div>
+      	   </td>
+      	   <td>{{pedido.valor | currency:'R$'}}</td>
+      	   <td>{{pedido.total | currency:'R$'}}</td>
+      	  </tr>
+      	</tbody>
+      </table>
+      
+      <div class="row page-header"></div>
+      
+      <div class="row">
+        <div class="col-md-2"><h3>Total:</h3></div> 
+         <div class="col-md-2"><h3>{{totalNota | currency:'R$'}}</h3></div>
+      </div>
+</div>
+
+

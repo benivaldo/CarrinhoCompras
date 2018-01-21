@@ -1,0 +1,52 @@
+
+<div class="container-fluid">
+   	&gt;<a href="" ng-click="listaProdCategoria(menuId, menuNome)">{{menuNome}}</a>
+	<h4 class="page-header">Pedido {{pedido}}</h4>
+	<div class="row">
+		<div class="col-sm-4">
+		 <div class="row"><h4>Forma de pagamento</h4></div>
+		 <div class="row">Escolher pagamento</div>
+		</div> 
+		<div class="col-sm-4">
+		 <div class="row"><h4>Status</h4></div>
+		 <div class="row">{{dadosPedido.status}}</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="row"><h4>Endere&ccedil;o de entrega</h4></div>
+			<div class="row">Nome:&nbsp;{{dadosPedido.nome}}</div>
+			<div class="row">Endere&ccedil;o:&nbsp;{{dadosPedido.logradouro}},&nbsp;{{dadosPedido.numero}}</div>
+			<div class="row">CEP:&nbsp;{{dadosPedido.cep}}</div>
+			<div class="row">Bairro:&nbsp;{{dadosPedido.bairro}}</div>
+			<div class="row">Estado:&nbsp;{{dadosPedido.estado}}</div>
+			<div class="row">Cidade:&nbsp;{{dadosPedido.cidade}}</div>
+		</div>
+	   </div>
+	   <br>
+       <table class="table">
+      	<thead>
+      	  <tr>
+      	   <th>Produto(s)</th>
+      	   <th>Quantidade</th>
+      	   <th>Valor Unit&aacute;rio</th>
+      	   <th>Valor Total</th>
+      	  </tr>
+      	</thead>
+      	<tbody>
+      	  <tr ng-repeat="pedido in pedidos">
+      	   <td><img class="prod_img_pedido" ng-src="{{pedido.imagem}}">{{pedido.nome}}</td>
+      	   <td>{{pedido.quantidade}}</td>
+      	   <td>{{pedido.valor | currency:'R$'}}</td>
+      	   <td>{{pedido.total | currency:'R$'}}</td>
+      	  </tr>
+      	</tbody>
+      </table>
+      
+      <div class="row page-header"></div>
+      
+      <div class="row">
+        <div class="col-md-2"><h3>Total:</h3></div> 
+           <div class="col-md-2"><h3>{{dadosPedido.total_nota | currency:'R$'}}</h3></div>
+      </div>
+</div>
+
+

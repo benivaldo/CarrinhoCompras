@@ -5,6 +5,7 @@ dump do banco na pasta api:
 compras.sql.
 
 usuario: root.
+
 senha: ''.
 
 Para o Back-End:

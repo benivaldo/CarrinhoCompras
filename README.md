@@ -25,6 +25,8 @@ node server.js
 
 Está configurado para a por 3000.
 
+http://localhost:3000
+
 login para testes:
 
 login: jose.benivaldo@email.com

@@ -6,31 +6,22 @@ use Pedido\Entity\Pedido;
 use Controle\Controller\AbstractRestController;
 use Zend\View\Model\JsonModel;
 use PedidoItem\Entity\PedidoItem;
+use Controle\Service\ControleService;
 
 class PedidoController extends AbstractRestController
 {
-    private function getVariaveis()
+    public function __construct(ControleService $controleService)
     {
+        parent::__construct($controleService);
+        
         $this->entity = '\Pedido\Entity\Pedido';
         $this->model = new Pedido();
         $this->foreignKeys = array();
-        $this->search;
+        $this->search = '';
     }
-    
-    
-    public function getList()
-    {
-        $this->getVariaveis();
         
-        /*return new JsonModel([
-            'data' => 'controller'
-        ]);*/
-        return parent::getList();
-    }
-    
     public function listAction()
     {
-        $this->getVariaveis();
         $this->search =$this->params()->fromRoute('search'); 
         /*return new JsonModel([
          'data' => 'controller'
@@ -40,15 +31,11 @@ class PedidoController extends AbstractRestController
     
     public function get($id)
     {
-        $this->getVariaveis();
-
         return parent::get($id);
     }
     
     public function create($data)
     {
-        $this->getVariaveis();
-
         $pedido = [];
         $pedido['clienteId'] = $data['user']['userId'];
         $pedido['status'] = 'Aguardando pagamento';
@@ -85,8 +72,6 @@ class PedidoController extends AbstractRestController
     
     public function update($id, $data)
     {
-        $this->getVariaveis();
-        
         $this->getForeignKeys($data);
         
         return  parent::update($id, $data);
@@ -94,8 +79,6 @@ class PedidoController extends AbstractRestController
     
     public function delete($id)
     {
-        $this->getVariaveis();
-        
         return parent::delete($id);
     }
     

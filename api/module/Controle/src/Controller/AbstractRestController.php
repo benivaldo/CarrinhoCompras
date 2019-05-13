@@ -7,6 +7,11 @@ use Controle\Service\ControleService;
 use Zend\View\Model\JsonModel;
 use Doctrine\ORM\Query\AST\PathExpression;
 
+/**
+ * 
+ * @author Benivaldo
+ *
+ */
 abstract class AbstractRestController extends AbstractRestfulController
 {	
 	/**

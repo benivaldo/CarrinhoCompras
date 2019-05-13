@@ -3,6 +3,8 @@ namespace Controle\Controller\Plugin;
 
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 use Zend\InputFilter\InputFilter;
+use Controle\Service\ControleService;
+use Zend\Form\Form;
 
 /**
  * Plugin para execução do metodo save
@@ -11,14 +13,15 @@ use Zend\InputFilter\InputFilter;
  */
 class SaveModel extends AbstractPlugin
 {
-    /**
-     * 
-     * @param object $entity
-     * @param object $controleService
-     * @param object $form
-     * @param string $route
-     */
-	public function save($entity, $controleService, $form, $route = 'home')
+   /**
+    * Plugin para salvar dados
+    * @param object $entity
+    * @param ControleService $controleService
+    * @param Form $form
+    * @param string $route
+    * @return \Controle\Service\multitype:unknown|string[]
+    */
+	public function save($entity, ControleService $controleService, Form $form, $route = 'home')
 	{
 	    $erro = '';
 		$request = $this->getController()->getRequest();

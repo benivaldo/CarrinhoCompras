@@ -6,18 +6,20 @@ use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Zend\Paginator\Paginator;
 use Zend\Form\Annotation\Object;
 use Zend\View\Model\JsonModel;
+use Doctrine\ORM\EntityManager;
+use Interop\Container\ContainerInterface;
 //use function Zend\Mvc\Controller\params;
 
 class ControleService 
 {    
     /**
      * Entity manager.
-     * @var Doctrine\ORM\EntityManager
+     * @var \Doctrine\ORM\EntityManager
      */
     protected $entityManager;
     protected $container;
     
-    public function __construct($entityManager, $container)
+    public function __construct(EntityManager $entityManager, ContainerInterface $container)
     {
         $this->entityManager = $entityManager;
         $this->container = $container;
@@ -33,7 +35,7 @@ class ControleService
     
     /**
      * 
-     * @return \Controle\Service\Doctrine\ORM\EntityManager
+     * @return \Doctrine\ORM\EntityManager
      */
     public function getEntity()
     {
@@ -57,7 +59,7 @@ class ControleService
     
     /**
      * Retorna dados por id
-     * @param unknown $id
+     * @param integer $id
      * @return Object
      */
     public function findById($entity, $id)
@@ -69,7 +71,7 @@ class ControleService
     
     /**
      * Retorna dados por id
-     * @param unknown $id
+     * @param integer $id
      * @return Object
      */
     public function findByCategoria($entity, $id)

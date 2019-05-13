@@ -5,9 +5,21 @@ namespace Produto\Controller;
 use Produto\Entity\Produto;
 use Controle\Controller\AbstractRestController;
 use Zend\View\Model\JsonModel;
+use Controle\Service\ControleService;
 
 class ProdutoController extends AbstractRestController
 {
+    
+    public function __construct(ControleService $controleService) 
+    {
+        parent::__construct($controleService);
+        
+        $this->entity = '\Produto\Entity\Produto';
+        $this->model = new Produto();
+        $this->foreignKeys = array();
+        $this->search = '';
+    }
+    
     private function getVariaveis()
     {
         $this->entity = '\Produto\Entity\Produto';
@@ -19,7 +31,7 @@ class ProdutoController extends AbstractRestController
     
     public function getList()
     {
-        $this->getVariaveis();
+        //$this->getVariaveis();
         
         /*return new JsonModel([
             'data' => 'controller'
@@ -30,7 +42,7 @@ class ProdutoController extends AbstractRestController
     
     public function get($id)
     {
-        $this->getVariaveis();
+        //$this->getVariaveis();
         
         
         return parent::get($id);
@@ -38,7 +50,7 @@ class ProdutoController extends AbstractRestController
     
     public function create($data)
     {
-        $this->getVariaveis();
+        //$this->getVariaveis();
         
         $this->getForeignKeys($data);
         
@@ -48,7 +60,7 @@ class ProdutoController extends AbstractRestController
     
     public function update($id, $data)
     {
-        $this->getVariaveis();
+        //$this->getVariaveis();
         
         $this->getForeignKeys($data);
         
@@ -57,14 +69,14 @@ class ProdutoController extends AbstractRestController
     
     public function delete($id)
     {
-        $this->getVariaveis();
+        //$this->getVariaveis();
         
         return parent::delete($id);
     }
     
     public function searchAction()
     {
-        $this->getVariaveis();
+        //$this->getVariaveis();
         $this->search = $this->params()->fromRoute('search'); 
         
         return parent::getList();
@@ -72,7 +84,7 @@ class ProdutoController extends AbstractRestController
     
     public function listaAction()
     {
-        $this->getVariaveis();
+        //$this->getVariaveis();
         
         /*return new JsonModel([
          'data' => 'controller'

@@ -3,10 +3,9 @@
 namespace Controle\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
-use Zend\Session\Container;
 use Controle\Service\ControleService;
-use Zend\Form\Annotation\Object;
 use Zend\View\Model\JsonModel;
+use Doctrine\ORM\Query\AST\PathExpression;
 
 abstract class AbstractRestController extends AbstractRestfulController
 {	
@@ -42,7 +41,7 @@ abstract class AbstractRestController extends AbstractRestfulController
 	
 	/**
 	 * Entity manager.
-	 * @var Doctrine\ORM\EntityManager
+	 * @var \Doctrine\ORM\EntityManager
 	 */
 	protected  $entityManager;
 	
@@ -77,14 +76,13 @@ abstract class AbstractRestController extends AbstractRestfulController
 	/**
 	 * Função para retorno de todos os dados
 	 * @param Object $query
-	 * @return \Zend\View\Model\JsonModel|\Controle\Controller\array
+	 * @return \Zend\View\Model\JsonModel
 	 */
 	public function getList()	
 	{
 	    $orderBy = 'id';
 	    $order = "ASC";
 	    $search = $this->search;
-	    $page = 1;
 	    $data_ini = '';
 	    $data_fin = '';
 	    
@@ -103,7 +101,7 @@ abstract class AbstractRestController extends AbstractRestfulController
 	/**
 	 * Função para retorno de todos os dados
 	 * @param Object $query
-	 * @return \Zend\View\Model\JsonModel|\Controle\Controller\array
+	 * @return \Zend\View\Model\JsonModel
 	 */
 	public function getLisProdCat($id)
 	{
@@ -156,7 +154,7 @@ abstract class AbstractRestController extends AbstractRestfulController
 	    
 	    $id = (!empty($prevId[0]['id']) ? $prevId[0]['id'] : $key);
 	    
-	    return  $result = new JsonModel([
+	    return  new JsonModel([
 	        'resultSet' => $id,
 	        'errorMessage' => $this->errorMessage['erro'],
 	        'id' => $id,
@@ -177,7 +175,7 @@ abstract class AbstractRestController extends AbstractRestfulController
 	    
 	    $id = (!empty($nextId[0]['id']) ? $nextId[0]['id'] : $key);
 	
-	    return  $result = new JsonModel([
+	    return new JsonModel([
 	        'resultSet' => $id,
 	        'errorMessage' => $this->errorMessage['erro'],
 	        'id' => $id,
@@ -194,7 +192,7 @@ abstract class AbstractRestController extends AbstractRestfulController
 	    $this->errorMessage = $this->saveModel()->saveRest($this->model, $this->controleService, $data, $this->foreignKeys);
 	    
 	   	    
-	    return  $result = new JsonModel([
+	    return new JsonModel([
 	        'resultSet' => '',
 	        'errorMessage' => $this->errorMessage['erro'],
 	        'id' => $this->errorMessage['id'],
@@ -216,7 +214,7 @@ abstract class AbstractRestController extends AbstractRestfulController
 	    
 	    $this->errorMessage = $this->saveModel()->saveRest($model, $this->controleService, $data, $this->foreignKeys);
 	    
-	    return  $result = new JsonModel([
+	    return new JsonModel([
 	        'resultSet' => '',
 	        'errorMessage' => $this->errorMessage['erro'],
 	        'id' => $this->errorMessage['id'],
@@ -234,7 +232,7 @@ abstract class AbstractRestController extends AbstractRestfulController
 	    
 	    $this->errorMessage = $this->deleteModel()->deleteRest($entity, $this->controleService);
 	    
-	    return  $result = new JsonModel([
+	    return new JsonModel([
 	        'resultSet' => '',
 	        'errorMessage' => $this->errorMessage['erro'],
 	        'id' => $this->errorMessage['id'],
